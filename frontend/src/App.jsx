@@ -7,6 +7,8 @@ import Adminpanel from './pages/Adminpanel';
 import AdminAddplayer from './pages/AdminAddplayer';
 import AdminPlayers from './pages/AdminPlayers';
 import PlayerProfile from './pages/PlayerProfile';
+import LeaderBoard from './components/LeaderBoard';
+import UserLeaderBoard from './pages/UserLeaderBoard';
 
 const App = () => {
   return (
@@ -19,6 +21,7 @@ const App = () => {
         <Route path="/admin/addplayer" element={<AdminAddplayer/>} />
         <Route path="/admin/player" element={<AdminPlayers/>} />
         <Route path="/playerpro" element={<PlayerProfile/>} />
+        <Route path="/leaderboard" element={<UserLeaderBoard/>} />
       </Routes>
     </Router>
   )

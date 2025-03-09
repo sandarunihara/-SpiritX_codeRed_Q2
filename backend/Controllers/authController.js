@@ -25,7 +25,8 @@ export const registerUser = async (req, res) => {
       return res.status(400).json({ message: "Team name already exists" });
     }
 
-    const user = new User({ username, password, teamname });
+    const role= "user";
+    const user = new User({ username, password, teamname ,role});
 
     await user.save();
 
@@ -44,6 +45,7 @@ export const registerUser = async (req, res) => {
         cashamount: user.cashamount,
         teamname: user.teamname,
         teamcount: user.teamcount,
+        role: user.role,
       },
     });
   } catch (error) {
@@ -87,6 +89,7 @@ export const loginUser = async (req, res) => {
         cashamount: user.cashamount,
         teamname: user.teamname,
         teamcount: user.teamcount,
+        role: user.role,
       },
     });
   } catch (error) {

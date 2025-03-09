@@ -13,6 +13,10 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    role: {
+        type: String,
+        default: 'user',
+    },
     cashamount: {
         type: Number,
         default: 9000000,

@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
+import LeaderBoard from '../components/LeaderBoard'
 
 const Adminpanel = () => {
   return (
@@ -14,8 +15,8 @@ const Adminpanel = () => {
                     <Link to={'/admin/player'} className='text-white font-bold w-full text-center py-3 rounded-2xl hover:bg-green-400/50 transition-all duration-300'>Players</Link>
                 </ul>
             </div>
-            <div className='bg-white'>
-                dsd
+            <div className='bg-white mx-auto'>
+                <LeaderBoard/>
             </div>
         </div>
 
