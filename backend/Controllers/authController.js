@@ -1,4 +1,5 @@
 import User from "../models/Usermodel.js";
+import Team from "../models/Teammodel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -15,7 +16,7 @@ export const registerUser = async (req, res) => {
 
   try {
     const existingUser = await User.findOne({ username });
-    const existingTeam = await User.findOne({ teamname });
+    const existingTeam = await Team.findOne({ teamname });
 
     if (existingUser) {
       return res.status(400).json({ message: "Username already exists" });
@@ -25,10 +26,16 @@ export const registerUser = async (req, res) => {
       return res.status(400).json({ message: "Team name already exists" });
     }
 
+
     const role= "user";
     const user = new User({ username, password, teamname ,role});
 
+
     await user.save();
+
+    // Create a new team with the provided team name
+    const team = new Team({ teamname });
+    await team.save();
 
     const token = jwt.sign(
       { id: user._id, username: user.username },
@@ -65,12 +72,16 @@ export const loginUser = async (req, res) => {
     const user = await User.findOne({ username });
 
     if (!user) {
+      console.error(`Login Error: User not found for username: ${username}`);
       return res.status(400).json({ message: "User does not exist" });
     }
 
     const isMatch = bcrypt.compareSync(password, user.password);
 
     if (!isMatch) {
+      console.error(
+        `Login Error: Invalid credentials for username: ${username}`
+      );
       return res.status(400).json({ message: "Invalid credentials" });
     }
 

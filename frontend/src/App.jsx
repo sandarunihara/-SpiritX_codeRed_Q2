@@ -9,6 +9,7 @@ import AdminPlayers from './pages/AdminPlayers';
 import PlayerProfile from './pages/PlayerProfile';
 import LeaderBoard from './components/LeaderBoard';
 import UserLeaderBoard from './pages/UserLeaderBoard';
+import Myteam from './pages/Myteam';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/admin/player" element={<AdminPlayers/>} />
         <Route path="/playerpro" element={<PlayerProfile/>} />
         <Route path="/leaderboard" element={<UserLeaderBoard/>} />
+        <Route path='/myteam' element={<Myteam/>} />
       </Routes>
     </Router>
   )

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AdminPlayers = () => {
   const [players, setPlayers] = useState([]);
 
-  const navigate=useNavigate();
 
   const fetchdata = async () => {
     const response = await fetch("http://localhost:5050/api/auth/allplayers", {
