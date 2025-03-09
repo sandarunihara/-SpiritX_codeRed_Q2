@@ -93,15 +93,15 @@ const SignUp = () => {
       const data = await response.json();
       console.log("Response:", data);
 
-      if (data.success) {
-        toast.success(data.message || "Registration successful!");
-        setTimeout(() => navigate("/"), 1500); // Delay to let toast appear
+      if (response.status === 201) {
+        toast.success("Registration successful!");
+        setTimeout(() => navigate("/login"), 1500); // Delay to let toast appear
       } else if (data.message === "User already exists") {
         toast.error("Username already exists");
       } else if (data.message === "Team name already exists") {
         toast.error("Team name already exists");
       } else {
-        toast.error(data.message || "Registration failed");
+        toast.error("Registration failed");
       }
     } catch (err) {
       console.error(err);

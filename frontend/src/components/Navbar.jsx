@@ -44,13 +44,13 @@ const Navbar = ({ admin = false }) => {
 
         <div className="flex space-x-4">
           <Link
-            to={"/"}
+            to={"/login"}
             className="bg-transparent border border-black px-5 py-2 rounded-xl flex justify-center items-center  text-white hover:bg-black transition-all duration-300"
           >
             Login
           </Link>
           <Link
-            to={"/"}
+            to={"/signup"}
             className="bg-black px-5 py-2 rounded-xl flex justify-center items-center  text-white hover:bg-white hover:border-white hover:text-black transition-all duration-300"
           >
             SignUp
