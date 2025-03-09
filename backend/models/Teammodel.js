@@ -12,10 +12,6 @@ const TeamSchema = new Schema({
         type: Array,
         required: [],
     },
-    score: {
-        type: Number,
-        default: 0,
-    },
     totalruns: {
         type: Number,
         default: 0,

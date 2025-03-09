@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AdminAddplayer = () => {
   const [formData, setFormData] = useState({
@@ -23,11 +25,25 @@ const AdminAddplayer = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // Handle saving form data (e.g., sending it to an API or storing it locally)
-    console.log("Form Submitted:", formData);
+    const response=await fetch('http://localhost:5050/api/auth/addplayer',{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(formData)
+    })
+    const responsedata=await response.json(); 
+    if(responsedata.success){
+        toast.success(responsedata.message);
+        navigate('/');
+    }else{
+        toast.error(responsedata.message)
+    }
   };
+
+  
   return (
     <div className="h-screen w-screen bg-gradient-to-b from-[#000000]/95 via-[#010a0a]/95 to-[#06b7b4]/95">
       <Navbar admin={true} />
@@ -75,7 +91,7 @@ const AdminAddplayer = () => {
                     value={formData.name}
                     onChange={handleChange}
                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
-                    required
+                    
                   />
                 </div>
 
@@ -93,7 +109,7 @@ const AdminAddplayer = () => {
                     value={formData.university}
                     onChange={handleChange}
                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
-                    required
+                    
                   />
                 </div>
               </div>
@@ -112,7 +128,7 @@ const AdminAddplayer = () => {
                   value={formData.category}
                   onChange={handleChange}
                   className="mt-1 p-2 border border-gray-300 rounded-md w-full"
-                  required
+                  
                 />
               </div>
               <div className="flex w-full justify-between gap-5">
@@ -130,7 +146,7 @@ const AdminAddplayer = () => {
                     value={formData.totalRuns}
                     onChange={handleChange}
                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
-                    required
+                    
                   />
                 </div>
 
@@ -148,7 +164,7 @@ const AdminAddplayer = () => {
                     value={formData.ballsFaced}
                     onChange={handleChange}
                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
-                    required
+                    
                   />
                 </div>
               </div>
@@ -167,7 +183,7 @@ const AdminAddplayer = () => {
                     value={formData.inningsPlayed}
                     onChange={handleChange}
                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
-                    required
+                    
                   />
                 </div>
                 <div className="w-1/2">
@@ -184,7 +200,7 @@ const AdminAddplayer = () => {
                     value={formData.runsConceded}
                     onChange={handleChange}
                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
-                    required
+                    
                   />
                 </div>
               </div>
@@ -203,7 +219,7 @@ const AdminAddplayer = () => {
                     value={formData.wickets}
                     onChange={handleChange}
                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
-                    required
+                    
                   />
                 </div>
 
@@ -221,7 +237,7 @@ const AdminAddplayer = () => {
                     value={formData.oversBowled}
                     onChange={handleChange}
                     className="mt-1 p-2 border border-gray-300 rounded-md w-full"
-                    required
+                    
                   />
                 </div>
               </div>

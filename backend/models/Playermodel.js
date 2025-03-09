@@ -15,15 +15,15 @@ const PlayerSchema = new Schema({
         type: String,
         required: true,
     },
-    totalruns: {
+    totalRuns: {
         type: Number,
         default: 0,
     },
-    ballsfaced: {
+    ballsFaced: {
         type: Number,
         default: 0,
     },
-    inningsplayed: {
+    inningsPlayed: {
         type: Number,
         default: 0,
     },
@@ -31,11 +31,11 @@ const PlayerSchema = new Schema({
         type: Number,
         default: 0,
     },
-    oversbowled: {
+    oversBowled: {
         type: Number,
         default: 0,
     },
-    runsconceded: {
+    runsConceded: {
         type: Number,
         default: 0,
     },
@@ -55,4 +55,16 @@ const PlayerSchema = new Schema({
         type: Number,
         default: 0,
     },
+    battingAverage:{
+        type: Number,
+        default: 0,
+    },
+    economyRate:{
+        type: Number,
+        default: 0,
+    }
 });
+
+const Player = mongoose.model('Player', PlayerSchema);
+
+export default Player;
