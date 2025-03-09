@@ -85,13 +85,15 @@ const Login = () => {
       });
 
       const responseData = await response.json();
+      console.log("Response Data:", responseData);
+      console.log("Response Status:", response.ok);
 
-      if (response.ok && responseData.success) {
+      if (response.ok && responseData.message === "Login successful") {
         toast.success("Login successful");
         login(responseData.token, responseData.user); // AuthContext login
-        navigate("/home");
+        navigate("/");
       } else {
-        toast.error(responseData.message || "Login failed");
+        toast.error("Login failed");
         setErrors({ ...errors, password: "Incorrect username or password." });
       }
     } catch (err) {
