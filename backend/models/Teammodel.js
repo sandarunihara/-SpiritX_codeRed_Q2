@@ -10,7 +10,7 @@ const TeamSchema = new Schema({
     },
     playerid: {
         type: Array,
-        required: [],
+        default: [],
     },
     totalruns: {
         type: Number,
@@ -33,6 +33,10 @@ const TeamSchema = new Schema({
             playername: '',
             wickets: 0,
         },
+    },
+    totalpoints: {
+        type: Number,
+        default: 0,
     },
 });
 

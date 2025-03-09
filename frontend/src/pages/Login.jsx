@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { AuthContext } from "../Context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
   const [ripples, setRipples] = useState([]);
@@ -93,7 +93,7 @@ const Login = () => {
         login(responseData.token, responseData.user); // AuthContext login
         navigate("/");
       } else {
-        toast.error("Login failed");
+        toast.error(responseData.message || "Login failed");
         setErrors({ ...errors, password: "Incorrect username or password." });
       }
     } catch (err) {

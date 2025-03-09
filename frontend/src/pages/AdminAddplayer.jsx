@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AdminAddplayer = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     university: "",
