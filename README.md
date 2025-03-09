@@ -1,4 +1,4 @@
-# -SpiritX_codeRed_Q2
+# -SpiritX_CodeRed_Q2
 # Spirit11 - Fantasy Cricket Platform
 
 ## 📌 Project Overview
